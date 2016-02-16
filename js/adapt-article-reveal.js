@@ -79,10 +79,12 @@ var ArticleRevealView = Backbone.View.extend({
         this.$el.siblings(".article-inner").velocity("slideUp", 600, _.bind(function() {
             this.toggleisVisible(false);
         }, this));
-        this.$el.velocity("scroll", {
+        //ios8 fix
+        $.scrollTo(this.$el.offset()['top']-$(".navigation").outerHeight(), { delay: 400, duration: 800 } );
+        /*this.$el.velocity("scroll", {
             duration: 600,
             offset: -$(".navigation").outerHeight()
-        });
+        });*/
         this.$(".article-reveal-open-button").focus();
     },
 

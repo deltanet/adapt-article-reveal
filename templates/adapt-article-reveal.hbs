@@ -1,35 +1,33 @@
-
-{{! Maintainers - Stuart Nicholls}}
-{{#if _isDesktop}}
-
-<div class="article-reveal-inner {{_articleReveal._classes}}" style="height:{{_articleReveal._height}}px; {{#if _articleReveal._backgroundImage}} background: url('{{_articleReveal._backgroundImage}}') center top no-repeat; {{/if}}" aria-label="{{_articleReveal._ariaRegions.articleReveal}}">
-    
-    <a href="#" class="article-reveal-open-button" style="top:{{_articleReveal._triggerPosition._top}}%; left:{{_articleReveal._triggerPosition._left}}%;" role="button" aria-label="{{_articleReveal._ariaLabels.openArticle}}">
-    <div class="article-reveal-open-button-icon icon icon-plus"></div>
-    <span class="article-reveal-open-button-text">{{_articleReveal._icon-text}}</span>
-    </a>
-    
-    <a href="#" class="article-reveal-close-button" role="button" aria-label="{{_articleReveal._ariaLabels.closeArticle}}">
-      <div class="article-reveal-close-button-icon icon icon-minus"></div>
-      <span class="article-reveal-close-button-text">{{_articleReveal._closeButtonText}}</span>
-    </a>
-    
-</div>
-
-{{else}}
-
-<div class="article-reveal-inner {{_articleReveal._classes}}" style="height:{{_articleReveal._mobileHeight}}px; {{#if _articleReveal._mobileBackgroundImage}} background: url('{{_articleReveal._mobileBackgroundImage}}') center top no-repeat; {{/if}}" aria-label="{{_articleReveal._ariaRegions.articleReveal}}">
-    
-    <a href="#" class="article-reveal-open-button" style="top:{{_articleReveal._mobileTriggerPosition._top}}%; left:{{_articleReveal._mobileTriggerPosition._left}}%;" role="button" aria-label="{{_articleReveal._ariaLabels.openArticle}}">
-    <div class="article-reveal-open-button-icon icon icon-plus"></div>
-    <span class="article-reveal-open-button-text">{{_articleReveal._icon-text}}</span>
-    </a>
-  
-    <a href="#" class="article-reveal-close-button" role="button" aria-label="{{_articleReveal._ariaLabels.closeArticle}}">
-      <div class="article-reveal-close-button-icon icon icon-minus"></div>
-      <span class="article-reveal-close-button-text">{{_articleReveal._closeButtonText}}</span>
-    </a>
-
-</div>
-
+{{! Check if a page title exist and render it}}
+{{#if _articleReveal.displayTitle}}
+  <div class="article-title">
+    <div role="heading" tabindex="0" class="article-title-inner h2"  aria-level="2">
+      {{{_articleReveal.displayTitle}}}
+    </div>
+  </div>
 {{/if}}
+
+{{! Check if page body exists and render it}}
+{{#if _articleReveal.bodyOpen}}
+  <div class="article-body">
+    <div class="article-body-inner">
+      {{{a11y_text _articleReveal.bodyOpen}}}
+    </div>
+  </div>
+{{/if}}
+
+{{! Check if page body exists and render it}}
+{{#if _articleReveal.instructionOpen}}
+  <div class="article-instruction">
+    <div class="article-instruction-inner">
+      {{{a11y_text _articleReveal.instructionOpen}}}
+    </div>
+  </div>
+{{/if}}
+
+<div class="article-reveal-inner {{_articleReveal._classes}}" style="min-height:{{_articleReveal._minHeight}}px; {{#if _articleReveal._backgroundImage}} background: url('{{_articleReveal._backgroundImage}}') center top no-repeat; {{/if}}" aria-label="{{_articleReveal._ariaRegions.articleReveal}}">
+
+  <button class="button article-reveal-open-button" role="button" aria-label="{{_articleReveal._ariaLabels.openArticle}}">{{_articleReveal.buttonOpen}}</button>
+  <button class="button article-reveal-close-button" role="button" aria-label="{{_articleReveal._ariaLabels.closeArticle}}">{{_articleReveal.buttonClose}}</button>
+
+</div>

@@ -16,7 +16,6 @@ var ArticleRevealView = Backbone.View.extend({
         this.render();
         this.setup();
         this.listenTo(Adapt, "remove", this.remove);
-        this.listenTo(Adapt, 'device:changed', this.setDeviceSize);
         Adapt.on("page:scrollTo", _.bind(this.onProgressBarScrollTo, this));
     },
 
@@ -34,6 +33,7 @@ var ArticleRevealView = Backbone.View.extend({
             this.$(".article-reveal-open-button").addClass('visited');
             this.$(".article-reveal-open-button").addClass('show');
         }
+        this.$(".article-reveal-close-button").addClass('article-reveal-hidden');
         return this;
     },
 	
@@ -52,28 +52,19 @@ var ArticleRevealView = Backbone.View.extend({
             //set components to isVisible false
             this.toggleisVisible( false );
         }
-        this.setDeviceSize();
-    },
-
-    setDeviceSize: function() {
-        if (Adapt.device.screenSize === 'large' || Adapt.device.screenSize === 'medium') {
-            this.$el.addClass('desktop').removeClass('mobile');
-            this.model.set('_isDesktop', true);
-        } else {
-            this.$el.addClass('mobile').removeClass('desktop');
-            this.model.set('_isDesktop', false)
-        }
         this.render();
     },
     
     closeArticle: function(event) {
         if (event) event.preventDefault();
 
-        //set article not showing in css
-        this.$(".article-reveal-open-button").removeClass('show');
+        // Change text
+        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyOpen).a11y_text();
+        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionOpen).a11y_text();
 
-        //animate Close..
-        // this.$(".article-reveal-close-button").velocity("fadeOut", 500);
+        this.$(".article-reveal-open-button").removeClass('article-reveal-hidden');
+
+        this.$(".article-reveal-close-button").addClass('article-reveal-hidden');
 
         //..and set components to isVisible false
         this.$el.siblings(".article-inner").velocity("slideUp", 600, _.bind(function() {
@@ -83,6 +74,7 @@ var ArticleRevealView = Backbone.View.extend({
             duration: 600,
             offset: -$(".navigation").outerHeight()
         });
+
         this.$(".article-reveal-open-button").focus();
     },
 
@@ -90,9 +82,16 @@ var ArticleRevealView = Backbone.View.extend({
         if (event) event.preventDefault();
         if(this.$el.closest(".article").hasClass("locked")) return; // in conjunction with pageLocking
 
+        // Change text
+        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyClose).a11y_text();
+        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionClose).a11y_text();
+
         //set article visited and article showing in css
         this.$(".article-reveal-open-button").addClass('visited');
-        this.$(".article-reveal-open-button").addClass('show');
+
+        this.$(".article-reveal-open-button").addClass('article-reveal-hidden');
+
+        this.$(".article-reveal-close-button").removeClass('article-reveal-hidden');
 
         //animate reveal 
         Adapt.trigger("article:revealing", this);
@@ -107,10 +106,6 @@ var ArticleRevealView = Backbone.View.extend({
             duration: 800,
             offset: this.$el.height() - $(".navigation").outerHeight()
         });
-        // this.$(".article-reveal-close-button").velocity("fadeIn", {
-        //     delay: 400,
-        //     duration: 500
-        // });
 
         //set components to isVisible true
         this.toggleisVisible(true);

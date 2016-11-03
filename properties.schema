@@ -1,0 +1,155 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required":false,
+  "properties":{
+    "pluginLocations": {
+      "type":"object",
+      "required":true,
+      "properties":{
+        "config": {
+          "type":"object"
+        },
+        "course": {
+          "type":"object"
+        },
+        "contentobject": {
+          "type":"object"
+        },
+        "article": {
+          "type":"object",
+          "properties":{
+            "_articleReveal": {
+              "type":"object",
+              "required":false,
+              "legend": "Article Reveal",
+              "properties":{
+                "_classes": {
+                  "type": "string",
+                  "required": true,
+                  "title": "Classes",
+                  "inputType": "Text",
+                  "validators": []
+                },
+                "_minHeight": {
+                  "type":"number",
+                  "required":true,
+                  "title": "Style: Minimum Height",
+                  "inputType": "Number",
+                  "default": 0,
+                  "validators": ["number"],
+                  "help": "This value determines the minimum height for the article-reveal-inner element."
+                },
+                "displayTitle": {
+                  "type":"string",
+                  "required":false,
+                  "default": "",
+                  "title": "Display Title",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "bodyOpen": {
+                  "type":"string",
+                  "required":false,
+                  "default": "",
+                  "title": "Open Body text",
+                  "inputType": "TextArea",
+                  "validators": [],
+                  "help": "Body text that is displayed when the article is revealed",
+                  "translatable": true
+                },
+                "bodyClose": {
+                  "type":"string",
+                  "required":false,
+                  "default": "",
+                  "title": "Closed Body text",
+                  "inputType": "TextArea",
+                  "validators": [],
+                  "help": "Body text that is displayed when the article is hidden",
+                  "translatable": true
+                },
+                "instructionOpen": {
+                  "type":"string",
+                  "required":false,
+                  "default": "Select <instr>Reveal</instr> to show the article.",
+                  "title": "Open Instruction Text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "instructionClose": {
+                  "type":"string",
+                  "required":false,
+                  "default": "Select <instr>Close</instr> to hide the article.",
+                  "title": "Close Instruction Text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "buttonOpen": {
+                  "type":"string",
+                  "required":false,
+                  "default": "Reveal",
+                  "title": "Open Button Text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "buttonClose": {
+                  "type":"string",
+                  "required":false,
+                  "default": "Close",
+                  "title": "Close Button Text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "_backgroundImage": {
+                  "type":"string",
+                  "required":true,
+                  "default": "",
+                  "title": "Background Image",
+                  "inputType": "Asset:image",
+                  "validators": []
+                },
+                "_ariaLabels": {
+                  "type":"object",
+                  "title": "Aria Labels",
+                  "required":false,
+                  "properties":{
+                    "openArticle": {
+                      "type":"string",
+                      "required":false,
+                      "default": "Open Article. Select here to reveal article content.",
+                      "title": "Open Button Aria Label",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "closeArticle": {
+                      "type":"string",
+                      "required":false,
+                      "default": "Close Article",
+                      "title": "Close Button Aria Label",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "block": {
+          "type":"object"
+        },
+        "component": {
+          "type":"object"
+        }
+      }
+    }
+  }
+}

@@ -25,6 +25,15 @@
               "required":false,
               "legend": "Article Reveal",
               "properties":{
+                "_isEnabled": {
+                  "type":"boolean",
+                  "required":false,
+                  "default": false,
+                  "title": "Article Reveal Enabled",
+                  "inputType": { "type": "Boolean", "options": [false, true]},
+                  "validators": [],
+                  "help": "Enables Article Reveal Extension"
+                },
                 "_classes": {
                   "type": "string",
                   "required": true,

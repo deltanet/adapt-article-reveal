@@ -22,17 +22,17 @@
           "properties":{
             "_articleReveal": {
               "type":"object",
-              "required":false,
+              "required": false,
               "legend": "Article Reveal",
               "properties":{
                 "_isEnabled": {
                   "type":"boolean",
-                  "required":false,
+                  "required": false,
                   "default": false,
-                  "title": "Article Reveal Enabled",
-                  "inputType": { "type": "Boolean", "options": [false, true]},
+                  "title": "Is Enabled",
+                  "inputType": "Checkbox",
                   "validators": [],
-                  "help": "Enables Article Reveal Extension"
+                  "help": "Controls whether the Article Reveal extension is enabled or disabled."
                 },
                 "_classes": {
                   "type": "string",
@@ -43,7 +43,7 @@
                 },
                 "_minHeight": {
                   "type":"number",
-                  "required":true,
+                  "required": true,
                   "title": "Style: Minimum Height",
                   "inputType": "Number",
                   "default": 0,
@@ -52,7 +52,7 @@
                 },
                 "displayTitle": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "",
                   "title": "Display Title",
                   "inputType": "Text",
@@ -61,27 +61,27 @@
                 },
                 "bodyOpen": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "",
                   "title": "Open Body text",
                   "inputType": "TextArea",
                   "validators": [],
-                  "help": "Body text that is displayed when the article is revealed",
+                  "help": "Body text that is displayed when the article is revealed.",
                   "translatable": true
                 },
                 "bodyClose": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "",
                   "title": "Closed Body text",
                   "inputType": "TextArea",
                   "validators": [],
-                  "help": "Body text that is displayed when the article is hidden",
+                  "help": "Body text that is displayed when the article is hidden.",
                   "translatable": true
                 },
                 "instructionOpen": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "Select <instr>Reveal</instr> to show the article.",
                   "title": "Open Instruction Text",
                   "inputType": "Text",
@@ -90,7 +90,7 @@
                 },
                 "instructionClose": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "Select <instr>Close</instr> to hide the article.",
                   "title": "Close Instruction Text",
                   "inputType": "Text",
@@ -99,7 +99,7 @@
                 },
                 "buttonOpen": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "Reveal",
                   "title": "Open Button Text",
                   "inputType": "Text",
@@ -108,7 +108,7 @@
                 },
                 "buttonClose": {
                   "type":"string",
-                  "required":false,
+                  "required": false,
                   "default": "Close",
                   "title": "Close Button Text",
                   "inputType": "Text",
@@ -117,7 +117,7 @@
                 },
                 "_backgroundImage": {
                   "type":"string",
-                  "required":true,
+                  "required": true,
                   "default": "",
                   "title": "Background Image",
                   "inputType": "Asset:image",
@@ -126,11 +126,11 @@
                 "_ariaLabels": {
                   "type":"object",
                   "title": "Aria Labels",
-                  "required":false,
+                  "required": false,
                   "properties":{
                     "openArticle": {
                       "type":"string",
-                      "required":false,
+                      "required": false,
                       "default": "Open Article. Select here to reveal article content.",
                       "title": "Open Button Aria Label",
                       "inputType": "Text",
@@ -139,7 +139,7 @@
                     },
                     "closeArticle": {
                       "type":"string",
-                      "required":false,
+                      "required": false,
                       "default": "Close Article",
                       "title": "Close Button Aria Label",
                       "inputType": "Text",

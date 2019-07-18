@@ -1,8 +1,8 @@
 # adapt-article-reveal
 
-**Article Reveal** is an *extension* for the the [Adapt framework](https://github.com/adaptlearning/adapt_framework).   
+**Article Reveal** is an *extension* for the [Adapt framework](https://github.com/adaptlearning/adapt_framework).   
 
-This extension hides the article inner and prepends an element containing a button to the top of the article element. Pressing the button reveals the hidden article inner.  
+This extension hides the article inner and prepends an element containing a button to the top of the article element. Selecting the button reveals the hidden article inner.  
 
 ## Installation
 
@@ -54,9 +54,9 @@ Several elements of **Article Reveal** have been assigned a label using the [ari
 No known limitations.
 
 ----------------------------
-**Version number:**  2.0.4   
-**Framework versions supported:**  2.0.6    
-**Author / maintainer:** [C&G Kineo](https://github.com/cgkineo/adapt-article-reveal) / DeltaNet with [contributors](https://github.com/deltanet/adapt-home/graphs/contributors)     
+**Version number:**  3.0.0   
+**Framework versions supported:**  4+    
+**Author / maintainer:** [C&G Kineo](https://github.com/cgkineo/adapt-article-reveal) / DeltaNet with [contributors](https://github.com/deltanet/adapt-article-reveal/graphs/contributors)     
 **Accessibility support:** Yes  
 **RTL support:** Yes     
 **Authoring tool support:** Yes

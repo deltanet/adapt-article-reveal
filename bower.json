@@ -1,7 +1,7 @@
 {
     "name": "adapt-article-reveal",
-    "version": "2.0.4",
-    "framework": "^2.0.0",
+    "version": "3.0.0",
+    "framework": ">=4",
     "homepage": "https://github.com/deltanet/adapt-article-reveal",
     "issues": "https://github.com/deltanet/adapt-article-reveal/issues/",
     "displayName": "Article Reveal",
@@ -12,6 +12,6 @@
         "adapt-plugin",
         "adapt-extension"
     ],
-    "license": "GPL-3.0",
+    "license": "GPLv3",
     "targetAttribute": "_articleReveal"
 }

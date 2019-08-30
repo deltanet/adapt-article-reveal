@@ -1,12 +1,6 @@
-/*
-* adapt-contrib-article-reveal
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Stuart Nicholls <stuart@stuartnicholls.com>, Mohammed Salamat Ali <Mohammed.SalamatAli@kineo.com>
-*/
-define(function(require) {
-
-var Adapt = require('coreJS/adapt');
-var Backbone = require('backbone');
+define([
+    'core/js/adapt'
+], function(Adapt) {
 
 var ArticleRevealView = Backbone.View.extend({
 
@@ -61,8 +55,8 @@ var ArticleRevealView = Backbone.View.extend({
         if (event) event.preventDefault();
 
         // Change text
-        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyOpen).a11y_text();
-        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionOpen).a11y_text();
+        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyOpen);
+        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionOpen);
 
         this.$(".article-reveal-open-button").removeClass('article-reveal-hidden');
 
@@ -85,8 +79,8 @@ var ArticleRevealView = Backbone.View.extend({
         if(this.$el.closest(".article").hasClass("locked")) return; // in conjunction with pageLocking
 
         // Change text
-        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyClose).a11y_text();
-        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionClose).a11y_text();
+        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyClose);
+        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionClose);
 
         //set article visited and article showing in css
         this.$(".article-reveal-open-button").addClass('visited');

@@ -48,7 +48,7 @@
                   "inputType": "Number",
                   "default": 0,
                   "validators": ["number"],
-                  "help": "This value determines the minimum height for the article-reveal-inner element."
+                  "help": "This value determines the minimum height for the article-reveal__inner element."
                 },
                 "displayTitle": {
                   "type":"string",

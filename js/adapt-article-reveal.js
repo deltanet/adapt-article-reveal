@@ -16,20 +16,20 @@ var ArticleRevealView = Backbone.View.extend({
     },
 
     events: {
-        "click .article-reveal-open-button":"revealArticle",
-        "click .article-reveal-close-button":"closeArticle"
+        "click .js-open-button":"revealArticle",
+        "click .js-close-button":"closeArticle"
     },
 
     render: function () {
         var data = this.model.toJSON();
         var template = Handlebars.templates["adapt-article-reveal"];
         $(this.el).html(template(data)).prependTo('.' + this.model.get("_id"));
-        var incomplete = this.model.findDescendants("components").where({_isComplete:false});
+        var incomplete = this.model.findDescendantModels("components", {where: { _isComplete: false }});
         if (incomplete.length === 0){
-            this.$(".article-reveal-open-button").addClass('visited');
-            this.$(".article-reveal-open-button").addClass('show');
+            this.$(".article-reveal__open-button").addClass('is-visited');
+            this.$(".article-reveal__open-button").addClass('show');
         }
-        this.$(".article-reveal-close-button").addClass('article-reveal-hidden');
+        this.$(".article-reveal__close-button").addClass('article-reveal__hidden');
         return this;
     },
 
@@ -39,9 +39,9 @@ var ArticleRevealView = Backbone.View.extend({
         this.preventDrag();
 
         //hide articles
-        var $articleInner = $("." + this.model.get("_id") + " > .article-inner ");
+        var $articleInner = $("." + this.model.get("_id") + " > .article__inner ");
 
-        var incomplete = this.model.findDescendants("components").where({_isComplete:false});
+        var incomplete = this.model.findDescendantModels("components", {where: { _isComplete: false }});
         if (incomplete.length > 0){
             $articleInner.css({display:"none"});
 
@@ -55,15 +55,15 @@ var ArticleRevealView = Backbone.View.extend({
         if (event) event.preventDefault();
 
         // Change text
-        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyOpen);
-        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionOpen);
+        this.$('.article__body-inner').html(this.model.get('_articleReveal').bodyOpen);
+        this.$('.article__instruction-inner').html(this.model.get('_articleReveal').instructionOpen);
 
-        this.$(".article-reveal-open-button").removeClass('article-reveal-hidden');
+        this.$(".article-reveal__open-button").removeClass('article-reveal__hidden');
 
-        this.$(".article-reveal-close-button").addClass('article-reveal-hidden');
+        this.$(".article-reveal__close-button").addClass('article-reveal__hidden');
 
         //..and set components to isVisible false
-        this.$el.siblings(".article-inner").velocity("slideUp", 600, _.bind(function() {
+        this.$el.siblings(".article__inner").velocity("slideUp", 600, _.bind(function() {
             this.toggleisVisible(false);
         }, this));
         this.$el.velocity("scroll", {
@@ -71,7 +71,7 @@ var ArticleRevealView = Backbone.View.extend({
             offset: -$(".navigation").outerHeight()
         });
 
-        this.$(".article-reveal-open-button").focus();
+        this.$(".article-reveal__open-button").focus();
     },
 
     revealArticle: function(event) {
@@ -79,19 +79,19 @@ var ArticleRevealView = Backbone.View.extend({
         if(this.$el.closest(".article").hasClass("locked")) return; // in conjunction with pageLocking
 
         // Change text
-        this.$('.article-body-inner').html(this.model.get('_articleReveal').bodyClose);
-        this.$('.article-instruction-inner').html(this.model.get('_articleReveal').instructionClose);
+        this.$('.article__body-inner').html(this.model.get('_articleReveal').bodyClose);
+        this.$('.article__instruction-inner').html(this.model.get('_articleReveal').instructionClose);
 
         //set article visited and article showing in css
-        this.$(".article-reveal-open-button").addClass('visited');
+        this.$(".article-reveal__open-button").addClass('is-visited');
 
-        this.$(".article-reveal-open-button").addClass('article-reveal-hidden');
+        this.$(".article-reveal__open-button").addClass('article-reveal__hidden');
 
-        this.$(".article-reveal-close-button").removeClass('article-reveal-hidden');
+        this.$(".article-reveal__close-button").removeClass('article-reveal__hidden');
 
         //animate reveal
         Adapt.trigger("article:revealing", this);
-        this.$el.siblings(".article-inner").velocity("slideDown", 800, _.bind(function() {
+        this.$el.siblings(".article__inner").velocity("slideDown", 800, _.bind(function() {
             Adapt.trigger("article:revealed", this);
             // Call window resize to force components to rerender -
             // fixes components that depend on being visible for setting up layout
@@ -108,8 +108,8 @@ var ArticleRevealView = Backbone.View.extend({
     },
 
     toggleisVisible: function(view) {
-        var allComponents = this.model.findDescendants('components');
-        allComponents.each(function(component) {
+        var allComponents = this.model.findDescendantModels('components');
+        allComponents.forEach(function(component) {
             component.setLocking("_isVisible", false);
             component.set('_isVisible', view, {
                 pluginName:"_articleReveal"
@@ -118,10 +118,10 @@ var ArticleRevealView = Backbone.View.extend({
     },
 
     preventDrag: function() {
-        $(".article-reveal-open-button").on("dragstart", function(event) {
+        $(".article-reveal__open-button").on("dragstart", function(event) {
             event.preventDefault();
         });
-        $(".article-reveal-close-button").on("dragstart", function(event) {
+        $(".article-reveal__close-button").on("dragstart", function(event) {
             event.preventDefault();
         });
     },
@@ -129,10 +129,10 @@ var ArticleRevealView = Backbone.View.extend({
     // Handles the Adapt page scrollTo event
     onProgressBarScrollTo: function(componentSelector) {
     	if (typeof componentSelector == "object") componentSelector = componentSelector.selector;
-        var allComponents = this.model.findDescendants('components');
+        var allComponents = this.model.findDescendantModels('components');
         var componentID = componentSelector;
         if(componentID.indexOf('.') === 0) componentID = componentID.slice(1);
-        allComponents.each(_.bind(function(component){
+        allComponents.forEach(_.bind(function(component){
             if(component.get('_id') === componentID && !component.get('_isVisible')){
                 this.revealComponent(componentSelector);
                 return;
@@ -141,12 +141,12 @@ var ArticleRevealView = Backbone.View.extend({
     },
 
     revealComponent: function(componentSelector) {
-        this.$(".article-reveal-open-button").addClass('visited');
-        this.$(".article-reveal-open-button").addClass('show');
+        this.$(".article-reveal__open-button").addClass('is-visited');
+        this.$(".article-reveal__open-button").addClass('show');
 
         this.toggleisVisible(true);
-        $("." + this.model.get("_id") + " > .article-inner ").slideDown(0);
-        this.$(".article-reveal-close-button").fadeIn(1);
+        $("." + this.model.get("_id") + " > .article__inner ").slideDown(0);
+        this.$(".article-reveal__close-button").fadeIn(1);
         $(window).scrollTo($(componentSelector), {
             offset:{
                 top:-$('.navigation').height()

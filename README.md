@@ -54,8 +54,8 @@ Several elements of **Article Reveal** have been assigned a label using the [ari
 No known limitations.
 
 ----------------------------
-**Version number:**  3.0.0   
-**Framework versions supported:**  4+    
+**Version number:**  4.0.0   
+**Framework versions supported:**  5+    
 **Author / maintainer:** [C&G Kineo](https://github.com/cgkineo/adapt-article-reveal) / DeltaNet with [contributors](https://github.com/deltanet/adapt-article-reveal/graphs/contributors)     
 **Accessibility support:** Yes  
 **RTL support:** Yes     

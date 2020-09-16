@@ -1,18 +1,18 @@
 // in the required article object(s) in article.json
-"_articleReveal":{
-    "_isEnabled": true,
-    "_classes": "",
-    "_minHeight":0,
-    "displayTitle": "Article Reveal",
-    "bodyOpen": "This is the Article Reveal extension.",
-    "bodyClose": "You can now see the revealed article and it's content below.",
-    "instructionOpen": "Select <instr>Reveal</instr> to show the article.",
-    "instructionClose": "Select <instr>Close</instr> to hide the article.",
-    "buttonOpen": "Reveal",
-    "buttonClose": "Close",
-    "_ariaLabels": {
-        "openArticle": "Open Article. Select here to reveal article content.",
-        "closeArticle": "Close Article"
-    },
-    "_backgroundImage":""
+"_articleReveal": {
+  "_isEnabled": true,
+  "_classes": "",
+  "_minHeight": 0,
+  "displayTitle": "Article Reveal",
+  "bodyOpen": "This is the Article Reveal extension.",
+  "bodyClose": "You can now see the revealed article and it's content below.",
+  "instructionOpen": "Select <instr>Reveal</instr> to show the article.",
+  "instructionClose": "Select <instr>Close</instr> to hide the article.",
+  "buttonOpen": "Reveal",
+  "buttonClose": "Close",
+  "_ariaLabels": {
+    "openArticle": "Open Article. Select here to reveal article content.",
+    "closeArticle": "Close Article"
+  },
+  "_backgroundImage": ""
 }
